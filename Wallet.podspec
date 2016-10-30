@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Wallet'
-  s.version          = '1.1'
+  s.version          = '1.2'
   s.summary          = 'Wallet is a collection view to manage cardViews and passes.'
 
 # This description is used to generate tags and improve search results.

@@ -1,6 +1,11 @@
 
+/**
+ The WalletView class manages an ordered collection of card view and presents them.
+ */
 open class WalletView: UIView {
     
+    // MARK: Public methods
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
         prepareWalletView()
@@ -229,6 +234,8 @@ open class WalletView: UIView {
     public typealias LayoutCompletion                   = (Bool) -> ()
     public typealias InsertionCompletion                = () -> ()
     public typealias RemovalCompletion                  = () -> ()
+    
+    // MARK: Private methods
     
     var observerContext = 8
     

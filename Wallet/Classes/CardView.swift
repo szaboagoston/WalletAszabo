@@ -1,6 +1,9 @@
 
+/**  The CardView class defines the attributes and behavior of the cards that appear in WalletView objects. */
 open class CardView: UIView {
     
+    // MARK: Public methods
+
     /**  A Boolean value that determines whether the view is presented. */
     open var presented: Bool = false
     
@@ -58,6 +61,8 @@ open class CardView: UIView {
         super.init(coder: aDecoder)
         setupGestures()
     }
+    
+    // MARK: Private methods
     
     func setupGestures() {
         

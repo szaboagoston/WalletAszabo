@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         walletView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         var coloredCardViews = [ColoredCardView]()
-        for index in 1...100 {
+        for index in 1...1000 {
             let cardView = ColoredCardView.nibForClass()
             cardView.index = index
             coloredCardViews.append(cardView)

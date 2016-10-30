@@ -15,32 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WwL-ta-MNY">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="nBp-qR-HbH">
-                            <rect key="frame" x="-2" y="-4" width="324" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="zTo-8q-qjH"/>
-                            </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="0O6-Zo-qgT">
-                            <rect key="frame" x="-2" y="464" width="324" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="5tp-Zu-PGm"/>
-                            </constraints>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="nBp-qR-HbH">
+                    <rect key="frame" x="-2" y="-4" width="324" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="0O6-Zo-qgT" secondAttribute="bottom" constant="-4" id="Fc9-Qn-gFy"/>
-                        <constraint firstItem="nBp-qR-HbH" firstAttribute="top" secondItem="WwL-ta-MNY" secondAttribute="top" constant="-4" id="XQi-DK-okS"/>
-                        <constraint firstAttribute="trailing" secondItem="nBp-qR-HbH" secondAttribute="trailing" constant="-2" id="gt1-Pe-Vpe"/>
-                        <constraint firstItem="0O6-Zo-qgT" firstAttribute="leading" secondItem="WwL-ta-MNY" secondAttribute="leading" constant="-2" id="jL7-Xu-gbQ"/>
-                        <constraint firstAttribute="trailing" secondItem="0O6-Zo-qgT" secondAttribute="trailing" constant="-2" id="jLl-k5-ZsD"/>
-                        <constraint firstItem="nBp-qR-HbH" firstAttribute="leading" secondItem="WwL-ta-MNY" secondAttribute="leading" constant="-2" id="w7I-U2-EpK"/>
+                        <constraint firstAttribute="height" constant="20" id="zTo-8q-qjH"/>
                     </constraints>
-                </view>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shadow" translatesAutoresizingMaskIntoConstraints="NO" id="0O6-Zo-qgT">
+                    <rect key="frame" x="-2" y="464" width="324" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="5tp-Zu-PGm"/>
+                    </constraints>
+                </imageView>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGR-lR-C5v">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <subviews>
@@ -60,7 +46,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ks-p9-g31">
                             <rect key="frame" x="8" y="8" width="173" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -71,30 +57,26 @@
                         <constraint firstAttribute="bottom" secondItem="Z4R-si-942" secondAttribute="bottom" id="pJW-F2-0vg"/>
                         <constraint firstItem="Z4R-si-942" firstAttribute="leading" secondItem="OGR-lR-C5v" secondAttribute="leading" id="rXN-pF-x9F"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <integer key="value" value="10"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="OGR-lR-C5v" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6Au-be-gZ8"/>
                 <constraint firstItem="OGR-lR-C5v" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AG8-xl-na4"/>
+                <constraint firstAttribute="trailing" secondItem="nBp-qR-HbH" secondAttribute="trailing" constant="-2" id="HWI-5Z-tUp"/>
                 <constraint firstItem="OGR-lR-C5v" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="TEo-HT-6Tw"/>
-                <constraint firstItem="WwL-ta-MNY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bKz-Ve-gRm"/>
+                <constraint firstItem="nBp-qR-HbH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-2" id="YfS-a6-yot"/>
+                <constraint firstAttribute="bottom" secondItem="0O6-Zo-qgT" secondAttribute="bottom" constant="-4" id="dyb-5Z-TyC"/>
                 <constraint firstItem="OGR-lR-C5v" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="e7s-HL-Ytp"/>
-                <constraint firstItem="WwL-ta-MNY" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="ePQ-ag-N8B"/>
-                <constraint firstItem="WwL-ta-MNY" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="fpC-Qa-zf3"/>
-                <constraint firstItem="WwL-ta-MNY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kpl-5x-VKx"/>
+                <constraint firstAttribute="trailing" secondItem="0O6-Zo-qgT" secondAttribute="trailing" constant="-2" id="fJY-lv-HYd"/>
+                <constraint firstItem="nBp-qR-HbH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-4" id="qCQ-Wu-GFd"/>
+                <constraint firstItem="0O6-Zo-qgT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-2" id="xAF-8i-ptM"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="contentView" destination="OGR-lR-C5v" id="fSz-Gj-R5Z"/>
                 <outlet property="indexLabel" destination="0ks-p9-g31" id="MY2-PU-84M"/>
                 <outlet property="removeCardViewButton" destination="Z4R-si-942" id="FgL-Mx-pc7"/>
-                <outlet property="shadowView" destination="WwL-ta-MNY" id="055-fn-tc3"/>
             </connections>
             <point key="canvasLocation" x="-124" y="-55"/>
         </view>

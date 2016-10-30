@@ -7,7 +7,6 @@ import DynamicColor
 
 class ColoredCardView: CardView {
 
-    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var contentView: UIView!
     
     let presentedCardViewColor:          UIColor = randomColor(hue: .random, luminosity: .dark).lighter()
@@ -23,6 +22,10 @@ class ColoredCardView: CardView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        contentView.layer.cornerRadius  = 10
+        contentView.layer.masksToBounds = true
+        
         presentedDidUpdate()
         
     }

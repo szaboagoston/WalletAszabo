@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Wallet'
-  s.version          = '1.3'
-  s.summary          = 'Wallet is a collection view to manage cardViews and passes.'
+  s.version          = '1.4'
+  s.summary          = 'Wallet is a library to manage cards and passes.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Wallet is a replica of Apple's Wallet. Add, delete or present your cardViews and passes just like in Wallet.
+Wallet is a replica of the Apple's Wallet interface. Add, delete or present your cards and passes.
                        DESC
 
   s.homepage         = 'https://github.com/rshevchuk/Wallet'

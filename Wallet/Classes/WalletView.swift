@@ -6,12 +6,24 @@ open class WalletView: UIView {
     
     // MARK: Public methods
 
+    /**
+     Initializes and returns a newly allocated wallet view object with the specified frame rectangle.
+     
+     - parameter aRect: The frame rectangle for the wallet view, measured in points.
+     - returns: An initialized wallet view.
+     */
     override public init(frame: CGRect) {
         super.init(frame: frame)
         prepareWalletView()
         addObservers()
     }
     
+    /**
+     Returns a wallet view object initialized from data in a given unarchiver.
+     
+     - parameter aDecoder: An unarchiver object.
+     - returns: A wallet view, initialized using the data in decoder.
+     */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         prepareWalletView()
@@ -68,7 +80,7 @@ open class WalletView: UIView {
      - parameter completion: A block object to be executed when the animation sequence ends.
 
      */
-    open func insert(cardView: CardView, animated: Bool = false, presented: Bool = true,  completion: InsertionCompletion? = nil) {
+    open func insert(cardView: CardView, animated: Bool = false, presented: Bool = false,  completion: InsertionCompletion? = nil) {
         
         presentedCardView = presented ? cardView : self.presentedCardView
         
@@ -235,6 +247,29 @@ open class WalletView: UIView {
     public typealias InsertionCompletion                = () -> ()
     public typealias RemovalCompletion                  = () -> ()
     
+    /**
+     Informs the observing object when the value at the specified key path relative to the observed object has changed.
+     
+     - parameter keyPath: The key path, relative to object, to the value that has changed.
+     - parameter object: The source object of the key path keyPath.
+     - parameter change: A dictionary that describes the changes that have been made to the value of the property at the key path keyPath relative to object. Entries are described in Change Dictionary Keys.
+     - parameter context: The value that was provided when the observer was registered to receive key-value observation notifications.
+     */
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if context == &observerContext {
+            
+            if keyPath == #keyPath(UIScrollView.bounds) {
+                layoutWalletView()
+            } else if keyPath == #keyPath(UIScrollView.frame) {
+                calculateLayoutValues()
+            }
+            
+        } else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+    
     // MARK: Private methods
     
     var observerContext = 8
@@ -251,21 +286,6 @@ open class WalletView: UIView {
         
         scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.frame), options: options, context: &observerContext)
         scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.bounds), options: options, context: &observerContext)
-    }
-    
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if context == &observerContext {
-            
-            if keyPath == #keyPath(UIScrollView.bounds) {
-                layoutWalletView()
-            } else if keyPath == #keyPath(UIScrollView.frame) {
-                calculateLayoutValues()
-            }
-            
-        } else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
     }
     
     func prepareScrollView() {

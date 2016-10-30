@@ -3,9 +3,37 @@
 open class CardView: UIView {
     
     // MARK: Public methods
-
+    
+    /**
+     Initializes and returns a newly allocated card view object with the specified frame rectangle.
+     
+     - parameter aRect: The frame rectangle for the card view, measured in points.
+     - returns: An initialized card view.
+     */
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setupGestures()
+    }
+    
+    /**
+     Returns a card view object initialized from data in a given unarchiver.
+     
+     - parameter aDecoder: An unarchiver object.
+     - returns: A card view, initialized using the data in decoder.
+     */
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupGestures()
+    }
+    
     /**  A Boolean value that determines whether the view is presented. */
     open var presented: Bool = false
+    
+    
+    /**  A parent wallet view object, or nil if the card view is not visible. */
+    public var walletView: WalletView? {
+        return container()
+    }
     
     /** This method is called when the card view is tapped. */
     open func tapped() {
@@ -44,25 +72,11 @@ open class CardView: UIView {
         
     }
     
+    // MARK: Private methods
+    
     let tapGestureRecognizer    = UITapGestureRecognizer()
     let panGestureRecognizer    = UIPanGestureRecognizer()
     let longGestureRecognizer   = UILongPressGestureRecognizer()
-    
-    public var walletView: WalletView? {
-        return container()
-    }
-    
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setupGestures()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupGestures()
-    }
-    
-    // MARK: Private methods
     
     func setupGestures() {
         
@@ -94,6 +108,11 @@ open class CardView: UIView {
 
 extension CardView: UIGestureRecognizerDelegate {
     
+    /**
+     Asks the delegate if a gesture recognizer should begin interpreting touches.
+     
+     - parameter gestureRecognizer: An instance of a subclass of the abstract base class UIGestureRecognizer. This gesture-recognizer object is about to begin processing touches to determine if its gesture is occurring.
+     */
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
         if gestureRecognizer == longGestureRecognizer && presented {
@@ -106,9 +125,34 @@ extension CardView: UIGestureRecognizerDelegate {
         
     }
     
+    /**
+     Asks the delegate if two gesture recognizers should be allowed to recognize gestures simultaneously.
+     
+     - parameter gestureRecognizer: An instance of a subclass of the abstract base class UIGestureRecognizer. This gesture-recognizer object is about to begin processing touches to determine if its gesture is occurring.
+     - parameter otherGestureRecognizer: An instance of a subclass of the abstract base class UIGestureRecognizer.
+
+     */
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer != tapGestureRecognizer && otherGestureRecognizer != tapGestureRecognizer
     }
     
+    
+}
+
+internal extension UIView {
+    
+    func container<T: UIView>() -> T? {
+        
+        var view = superview
+        
+        while view != nil {
+            if let view = view as? T {
+                return view
+            }
+            view = view?.superview
+        }
+        
+        return nil
+    }
     
 }

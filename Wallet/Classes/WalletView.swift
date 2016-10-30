@@ -325,7 +325,6 @@ open class WalletView: UIView {
             presentedCardView = cardView
             layoutWalletView(animationDuration: animated ? animationDuration : nil, placeVisibleCardViews: false, completion: { [weak self] (_) in
                 self?.placeVisibleCardViews()
-                self?.calculateLayoutValues()
                 completion?(true)
             })
             

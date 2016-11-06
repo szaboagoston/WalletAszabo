@@ -426,6 +426,7 @@ open class WalletView: UIView {
                 })
                 
             }, completion: { (_) in
+                completion?()
                 removalSuperview.removeFromSuperview()
                 
             })

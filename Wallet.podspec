@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Wallet'
-  s.version          = '1.4'
+  s.version          = '1.4.1'
   s.summary          = 'Wallet is a library to manage cards and passes.'
 
 # This description is used to generate tags and improve search results.

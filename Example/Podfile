@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'Wallet_Example' do
-    pod 'RandomColorSwift'
+    pod 'RandomColorSwift', :git => 'https://github.com/onevcat/RandomColorSwift.git', :commit => '902050e3cabb596eaeb9ed725dbf22b17a3f3e4c'
     pod 'DynamicColor'
     pod 'Wallet', :path => '../'
 end

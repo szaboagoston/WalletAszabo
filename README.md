@@ -12,8 +12,8 @@ Please, contribute and send pull requests!
 
 ## Requirements
 
-- iOS 8.0+
-- Swift 3
+- iOS 11.0+
+- Swift 5
 
 ## Installation
 

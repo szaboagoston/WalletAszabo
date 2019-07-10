@@ -255,29 +255,29 @@ open class WalletView: UIView {
      - parameter change: A dictionary that describes the changes that have been made to the value of the property at the key path keyPath relative to object. Entries are described in Change Dictionary Keys.
      - parameter context: The value that was provided when the observer was registered to receive key-value observation notifications.
      */
+    
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        if context == observerContext {
-            
-            if keyPath == #keyPath(UIScrollView.bounds) {
-                layoutWalletView()
-            } else if keyPath == #keyPath(UIScrollView.frame) {
-                calculateLayoutValues()
-            }
-            
-        } else {
+        guard context == &WalletView.observerContext else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
         }
+        
+        if keyPath == #keyPath(UIScrollView.bounds) {
+            layoutWalletView()
+        } else if keyPath == #keyPath(UIScrollView.frame) {
+            calculateLayoutValues()
+        }
+        
     }
     
     // MARK: Private methods
     
-    private let observerContext = UnsafeMutableRawPointer.allocate(bytes: 4, alignedTo: 1)
+    private static var observerContext = 0
     
     deinit {
-        scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.frame))
-        scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.bounds))
-        observerContext.deallocate(bytes: 4, alignedTo: 1)
+        scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.frame), context: &WalletView.observerContext)
+        scrollView.removeObserver(self, forKeyPath: #keyPath(UIScrollView.bounds), context: &WalletView.observerContext)
     }
     
     
@@ -285,8 +285,9 @@ open class WalletView: UIView {
         
         let options: NSKeyValueObservingOptions = [.new, .old, .initial]
         
-        scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.frame), options: options, context: observerContext)
-        scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.bounds), options: options, context: observerContext)
+        scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.frame), options: options, context: &WalletView.observerContext)
+        
+        scrollView.addObserver(self, forKeyPath: #keyPath(UIScrollView.bounds), options: options, context: &WalletView.observerContext)
     }
     
     func prepareScrollView() {
@@ -552,7 +553,7 @@ open class WalletView: UIView {
     }
     
     func layoutWalletView(animationDuration: TimeInterval? = nil,
-                          animationOptions: UIViewKeyframeAnimationOptions = [.beginFromCurrentState, .calculationModeCubic],
+                          animationOptions: UIView.KeyframeAnimationOptions = [.beginFromCurrentState, .calculationModeCubic],
                           placeVisibleCardViews: Bool = true,
                           completion: LayoutCompletion? = nil) {
         
@@ -614,7 +615,7 @@ open class WalletView: UIView {
             let scrollViewContentOffsetY = scrollView.contentOffset.y
             
             if negativeScrollViewContentInsetTop > scrollViewContentOffsetY {
-                return fabs(fabs(negativeScrollViewContentInsetTop) + scrollViewContentOffsetY)
+                return abs(abs(negativeScrollViewContentInsetTop) + scrollViewContentOffsetY)
             }
             
             return nil
@@ -670,7 +671,7 @@ open class WalletView: UIView {
         let firstIndexToMoveY: Int = {
             
             guard let presentedCardView = presentedCardView,
-                let presentedCardViewIndex = insertedCardViews.index(of: presentedCardView) else {
+                let presentedCardViewIndex = insertedCardViews.firstIndex(of: presentedCardView) else {
                     return 0
             }
             

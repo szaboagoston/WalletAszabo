@@ -26,11 +26,7 @@
 
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit
-#elseif os(OSX)
-  import AppKit
-#endif
 
-#if os(iOS) || os(tvOS) || os(watchOS)
   /**
    Extension to manipulate colours easily.
 
@@ -38,6 +34,8 @@
    */
   public typealias DynamicColor = UIColor
 #elseif os(OSX)
+  import AppKit
+
   /**
    Extension to manipulate colours easily.
 
@@ -50,24 +48,24 @@ public extension DynamicColor {
   // MARK: - Manipulating Hexa-decimal Values and Strings
 
   /**
-   Creates a color from an hex string (e.g. "#3498db").
+   Creates a color from an hex string (e.g. "#3498db"). The RGBA string are also supported (e.g. "#3498dbff").
 
    If the given hex string is invalid the initialiser will create a black color.
 
    - parameter hexString: A hexa-decimal color string representation.
    */
-  public convenience init(hexString: String) {
-    let hexString = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+  convenience init(hexString: String) {
+    let hexString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
     let scanner   = Scanner(string: hexString)
 
-    if (hexString.hasPrefix("#")) {
+    if hexString.hasPrefix("#") {
       scanner.scanLocation = 1
     }
 
     var color: UInt32 = 0
 
     if scanner.scanHexInt32(&color) {
-      self.init(hex: color)
+      self.init(hex: color, useAlpha: hexString.count > 7)
     }
     else {
       self.init(hex: 0x000000)
@@ -78,19 +76,23 @@ public extension DynamicColor {
    Creates a color from an hex integer (e.g. 0x3498db).
 
    - parameter hex: A hexa-decimal UInt32 that represents a color.
+   - parameter alphaChannel: If true the given hex-decimal UInt32 includes the alpha channel (e.g. 0xFF0000FF).
    */
-  public convenience init(hex: UInt32) {
-    let mask = 0x000000FF
+  convenience init(hex: UInt32, useAlpha alphaChannel: Bool = false) {
+    let mask      = UInt32(0xFF)
+    let cappedHex = !alphaChannel && hex > 0xffffff ? 0xffffff : hex
 
-    let r = Int(hex >> 16) & mask
-    let g = Int(hex >> 8) & mask
-    let b = Int(hex) & mask
+    let r = cappedHex >> (alphaChannel ? 24 : 16) & mask
+    let g = cappedHex >> (alphaChannel ? 16 : 8) & mask
+    let b = cappedHex >> (alphaChannel ? 8 : 0) & mask
+    let a = alphaChannel ? cappedHex & mask : 255
 
     let red   = CGFloat(r) / 255
     let green = CGFloat(g) / 255
     let blue  = CGFloat(b) / 255
+    let alpha = CGFloat(a) / 255
 
-    self.init(red:red, green:green, blue:blue, alpha:1)
+    self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
 
   /**
@@ -98,8 +100,8 @@ public extension DynamicColor {
 
    - returns: A string similar to this pattern "#f4003b".
    */
-  public final func toHexString() -> String {
-    return String(format:"#%06x", toHex())
+  final func toHexString() -> String {
+    return String(format: "#%06x", toHex())
   }
 
   /**
@@ -107,9 +109,12 @@ public extension DynamicColor {
 
    - returns: A UInt32 that represents the hexa-decimal color.
    */
-  public final func toHex() -> UInt32 {
+  final func toHex() -> UInt32 {
     func roundToHex(_ x: CGFloat) -> UInt32 {
-      return UInt32(round(1000 * x) / 1000 * 255)
+      guard x > 0 else { return 0 }
+      let rounded: CGFloat = round(x * 255)
+
+      return UInt32(rounded)
     }
 
     let rgba       = toRGBAComponents()
@@ -126,7 +131,7 @@ public extension DynamicColor {
    - parameter hexString: A hexa-decimal color number representation to be compared to the receiver.
    - returns: true if the receiver and the string are equals, otherwise false.
    */
-  public func isEqual(toHexString hexString: String) -> Bool {
+  func isEqual(toHexString hexString: String) -> Bool {
     return self.toHexString() == hexString
   }
 
@@ -136,7 +141,7 @@ public extension DynamicColor {
    - parameter hex: A UInt32 that represents the hexa-decimal color.
    - returns: true if the receiver and the integer are equals, otherwise false.
    */
-  public func isEqual(toHex hex: UInt32) -> Bool {
+  func isEqual(toHex hex: UInt32) -> Bool {
     return self.toHex() == hex
   }
 
@@ -152,7 +157,59 @@ public extension DynamicColor {
   func isLight() -> Bool {
     let components = toRGBAComponents()
     let brightness = ((components.r * 299) + (components.g * 587) + (components.b * 114)) / 1000
-    
+
     return brightness >= 0.5
+  }
+
+  /**
+   A float value representing the luminance of the current color. May vary from 0 to 1.0.
+   
+   We use the formula described by W3C in WCAG 2.0. You can read more here: https://www.w3.org/TR/WCAG20/#relativeluminancedef.
+  */
+  var luminance: CGFloat {
+    let components = toRGBAComponents()
+
+    let componentsArray = [components.r, components.g, components.b].map { (val) -> CGFloat in
+      guard val <= 0.03928 else { return pow((val + 0.055) / 1.055, 2.4) }
+
+      return val / 12.92
+    }
+
+    return (0.2126 * componentsArray[0]) + (0.7152 * componentsArray[1]) + (0.0722 * componentsArray[2])
+  }
+
+  /**
+     Returns a float value representing the contrast ratio between 2 colors. 
+     
+     We use the formula described by W3C in WCAG 2.0. You can read more here: https://www.w3.org/TR/WCAG20-TECHS/G18.html
+     NB: the contrast ratio is a relative value. So the contrast between Color1 and Color2 is exactly the same between Color2 and Color1.
+     
+     - returns: A CGFloat representing contrast value.
+     */
+  func contrastRatio(with otherColor: DynamicColor) -> CGFloat {
+    let otherLuminance = otherColor.luminance
+
+    let l1 = max(luminance, otherLuminance)
+    let l2 = min(luminance, otherLuminance)
+
+    return (l1 + 0.05) / (l2 + 0.05)
+  }
+
+  /**
+   Indicates if two colors are contrasting, regarding W3C's WCAG 2.0 recommendations.
+   
+   You can read it here: https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast
+   
+   The acceptable contrast ratio depends on the context of display. Most of the time, the default context (.Standard) is enough.
+   
+   You can look at ContrastDisplayContext for more options.
+   
+   - parameter otherColor: The other color to compare with.
+   - parameter context: An optional context to determine the minimum acceptable contrast ratio. Default value is .Standard.
+   
+   - returns: true is the contrast ratio between 2 colors exceed the minimum acceptable ratio.
+   */
+  func isContrasting(with otherColor: DynamicColor, inContext context: ContrastDisplayContext = .standard) -> Bool {
+    return self.contrastRatio(with: otherColor) > context.minimumContrastRatio
   }
 }

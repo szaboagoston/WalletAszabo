@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Wallet'
-  s.version          = '1.4.1'
+  s.version          = '5.0'
   s.summary          = 'Wallet is a library to manage cards and passes.'
 
 # This description is used to generate tags and improve search results.
@@ -20,8 +20,8 @@ Wallet is a replica of the Apple's Wallet interface. Add, delete or present your
   s.source           = { :git => 'https://github.com/rshevchuk/Wallet.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
-
+  s.ios.deployment_target = '11.0'
+  s.swift_version = '5.0'
   s.source_files = 'Wallet/Classes/**/*'
 
   # s.resource_bundles = {

@@ -318,7 +318,7 @@ open class WalletView: UIView {
         self.walletHeader = walletHeader
     }
     
-    let scrollView = UIScrollView()
+    public let scrollView = UIScrollView()
 
     func prepareWalletView() {
         
@@ -438,11 +438,11 @@ open class WalletView: UIView {
     
     weak var grabbedCardView: CardView?
     
-    var grabbedCardViewOriginalY:                                           CGFloat = 0
+    var grabbedCardViewOriginalY: CGFloat = 0
     
     func grab(cardView: CardView, popup: Bool) {
         
-        if insertedCardViews.count <= 1 || (presentedCardView != nil && presentedCardView != cardView) {
+        if (presentedCardView != nil && presentedCardView != cardView) {
             return
         }
         scrollView.isScrollEnabled = false
@@ -483,7 +483,11 @@ open class WalletView: UIView {
             let yPoints = frame.maxY - (presentationCenter.y - maximumCardViewHeight / 2)
             let velocityY = grabbedCardView.panGestureRecognizer.velocity(in: grabbedCardView).y
             let animationDuration = min(WalletView.dismissingAnimationSpeed * 1.5, TimeInterval(yPoints / velocityY))
-            dismissPresentedCardView(animated: true, animationDuration: animationDuration)
+            if insertedCardViews.count > 1 {
+                dismissPresentedCardView(animated: true, animationDuration: animationDuration)
+            } else {
+                layoutWalletView(animationDuration: WalletView.grabbingAnimationSpeed)
+            }
         } else if let grabbedCardView = grabbedCardView,
             presentedCardView == nil && grabbedCardView.presented == false,
             grabbedCardView.frame.origin.y < grabbedCardViewOriginalY - maximumCardViewHeight / 4 {

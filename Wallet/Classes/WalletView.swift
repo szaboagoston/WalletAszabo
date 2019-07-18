@@ -242,7 +242,8 @@ open class WalletView: UIView {
     }
     
     public typealias PresentedCardViewDidUpdateBlock    = (CardView?) -> ()
-    
+    public typealias CardViewCanPanBlock                = () -> (Bool)
+
     public typealias LayoutCompletion                   = (Bool) -> ()
     public typealias InsertionCompletion                = () -> ()
     public typealias RemovalCompletion                  = () -> ()

@@ -44,6 +44,9 @@ open class CardView: UIView {
         }
     }
     
+    /** This block is called to determine if card view can be panned. */
+    public var cardViewCanPanBlock: WalletView.CardViewCanPanBlock?
+    
     /** This method is called when the card view is panned. */
     @objc open func panned(gestureRecognizer: UIPanGestureRecognizer) {
         
@@ -114,6 +117,14 @@ extension CardView: UIGestureRecognizerDelegate {
      - parameter gestureRecognizer: An instance of a subclass of the abstract base class UIGestureRecognizer. This gesture-recognizer object is about to begin processing touches to determine if its gesture is occurring.
      */
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        
+        if gestureRecognizer == panGestureRecognizer {
+            let cardViewCanPan = cardViewCanPanBlock?() ?? true
+            if !cardViewCanPan {
+                return false
+            }
+        }
         
         if gestureRecognizer == longGestureRecognizer && presented {
             return false

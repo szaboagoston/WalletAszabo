@@ -43,7 +43,7 @@ and run the target named `Wallet-Example` in Xcode.
 
 ## Author
 
-Ruslan Shevchuk, inbox@rshevchuk.io
+Russ Shevchuk, inbox@rshevchuk.io
 
 ## License
 

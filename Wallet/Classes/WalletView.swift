@@ -243,6 +243,7 @@ open class WalletView: UIView {
     
     public typealias PresentedCardViewDidUpdateBlock    = (CardView?) -> ()
     public typealias CardViewCanPanBlock                = () -> (Bool)
+    public typealias CardViewBeganPanBlock              = () -> ()
 
     public typealias LayoutCompletion                   = (Bool) -> ()
     public typealias InsertionCompletion                = () -> ()
@@ -441,11 +442,13 @@ open class WalletView: UIView {
     
     var grabbedCardViewOriginalY: CGFloat = 0
     
-    func grab(cardView: CardView, popup: Bool) {
+    @discardableResult
+    func grab(cardView: CardView, popup: Bool) -> Bool {
         
         if (presentedCardView != nil && presentedCardView != cardView) {
-            return
+            return false
         }
+        
         scrollView.isScrollEnabled = false
         
         grabbedCardView = cardView
@@ -458,6 +461,8 @@ open class WalletView: UIView {
             self?.grabbedCardView?.frame = cardViewFrame
             self?.grabbedCardView?.layoutIfNeeded()
             }, completion: nil)
+        
+        return true
         
     }
     

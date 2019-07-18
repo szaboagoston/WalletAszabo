@@ -44,15 +44,20 @@ open class CardView: UIView {
         }
     }
     
-    /** This block is called to determine if card view can be panned. */
+    /** This block is called to determine if a card view can be panned. */
     public var cardViewCanPanBlock: WalletView.CardViewCanPanBlock?
+    
+    /** This block is called when a card view began panning. */
+    public var cardViewBeganPanBlock: WalletView.CardViewBeganPanBlock?
     
     /** This method is called when the card view is panned. */
     @objc open func panned(gestureRecognizer: UIPanGestureRecognizer) {
         
         switch gestureRecognizer.state {
         case .began:
-            walletView?.grab(cardView: self, popup: false)
+            if walletView?.grab(cardView: self, popup: false) == true {
+                cardViewBeganPanBlock?()
+            }
         case .changed:
             updateGrabbedCardViewOffset(gestureRecognizer: gestureRecognizer)
         default:

@@ -193,8 +193,8 @@ open class WalletView: UIView {
     /** The total duration of the animations when the card view is being grabbed. */
     public static var grabbingAnimationSpeed: TimeInterval = 0.2
     
-    /** This block is called after the receiver’s card view is presented or dimissed. */
-    public var didUpdatePresentedCardViewBlock: PresentedCardViewDidUpdateBlock?
+    /** This block is called after the receiver’s card view is presented. */
+    public var didPresentCardViewBlock: PresentedCardViewDidUpdateBlock?
     
     /** Returns an accessory view that is displayed above the wallet view. */
     @IBOutlet public weak var walletHeader: UIView? {
@@ -216,7 +216,7 @@ open class WalletView: UIView {
         didSet {
             oldValue?.presented = false
             presentedCardView?.presented = true
-            didUpdatePresentedCardViewBlock?(presentedCardView)
+            didPresentCardViewBlock?(presentedCardView)
         }
         
     }
@@ -242,7 +242,7 @@ open class WalletView: UIView {
     }
     
     public typealias PresentedCardViewDidUpdateBlock    = (CardView?) -> ()
-    public typealias CardViewCanPanBlock                = () -> (Bool)
+    public typealias CardViewShouldAllowBlock           = () -> (Bool)
     public typealias CardViewBeganPanBlock              = () -> ()
 
     public typealias LayoutCompletion                   = (Bool) -> ()
@@ -442,13 +442,11 @@ open class WalletView: UIView {
     
     var grabbedCardViewOriginalY: CGFloat = 0
     
-    @discardableResult
-    func grab(cardView: CardView, popup: Bool) -> Bool {
+    func grab(cardView: CardView, popup: Bool) {
         
         if (presentedCardView != nil && presentedCardView != cardView) {
-            return false
+            return
         }
-        
         scrollView.isScrollEnabled = false
         
         grabbedCardView = cardView
@@ -462,8 +460,6 @@ open class WalletView: UIView {
             self?.grabbedCardView?.layoutIfNeeded()
             }, completion: nil)
         
-        return true
-        
     }
     
     func updateGrabbedCardView(offset: CGFloat) {
@@ -471,7 +467,6 @@ open class WalletView: UIView {
         var cardViewFrame = grabbedCardView?.frame ?? CGRect.zero
         cardViewFrame.origin.y = grabbedCardViewOriginalY + offset
         grabbedCardView?.frame = cardViewFrame
-        
         
     }
     

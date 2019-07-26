@@ -45,8 +45,12 @@ open class CardView: UIView {
     }
     
     /** This block is called to determine if a card view can be panned. */
-    public var cardViewCanPanBlock: WalletView.CardViewCanPanBlock?
+    public var cardViewCanPanBlock: WalletView.CardViewShouldAllowBlock?
     
+    /** This block is called to determine if a card view can be panned. */
+    public var cardViewCanReleaseBlock: WalletView.CardViewShouldAllowBlock?
+    
+    private var calledCardViewBeganPanBlock = true
     /** This block is called when a card view began panning. */
     public var cardViewBeganPanBlock: WalletView.CardViewBeganPanBlock?
     
@@ -55,13 +59,16 @@ open class CardView: UIView {
         
         switch gestureRecognizer.state {
         case .began:
-            if walletView?.grab(cardView: self, popup: false) == true {
-                cardViewBeganPanBlock?()
-            }
+            walletView?.grab(cardView: self, popup: false)
+            calledCardViewBeganPanBlock = false
         case .changed:
             updateGrabbedCardViewOffset(gestureRecognizer: gestureRecognizer)
         default:
-            walletView?.releaseGrabbedCardView()
+            if cardViewCanReleaseBlock?() == false {
+                walletView?.layoutWalletView(animationDuration: WalletView.grabbingAnimationSpeed)
+            } else {
+                walletView?.releaseGrabbedCardView()
+            }
         }
         
     }
@@ -74,17 +81,21 @@ open class CardView: UIView {
             walletView?.grab(cardView: self, popup: true)
         case .changed: ()
         default:
-            walletView?.releaseGrabbedCardView()
+            if cardViewCanReleaseBlock?() == false {
+                walletView?.layoutWalletView(animationDuration: WalletView.grabbingAnimationSpeed)
+            } else {
+                walletView?.releaseGrabbedCardView()
+            }
         }
         
         
     }
     
-    // MARK: Private methods
+    public let tapGestureRecognizer    = UITapGestureRecognizer()
+    public let panGestureRecognizer    = UIPanGestureRecognizer()
+    public let longGestureRecognizer   = UILongPressGestureRecognizer()
     
-    let tapGestureRecognizer    = UITapGestureRecognizer()
-    let panGestureRecognizer    = UIPanGestureRecognizer()
-    let longGestureRecognizer   = UILongPressGestureRecognizer()
+    // MARK: Private methods
     
     func setupGestures() {
         
@@ -107,6 +118,10 @@ open class CardView: UIView {
         let offset = gestureRecognizer.translation(in: walletView).y
         if presented && offset > 0 {
             walletView?.updateGrabbedCardView(offset: offset)
+            if cardViewCanPanBlock?() == true, calledCardViewBeganPanBlock == false {
+                cardViewBeganPanBlock?()
+                calledCardViewBeganPanBlock = true
+            }
         } else if !presented {
             walletView?.updateGrabbedCardView(offset: offset)
         }

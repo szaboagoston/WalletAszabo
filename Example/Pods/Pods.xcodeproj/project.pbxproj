@@ -76,7 +76,7 @@
 		1C82CE460D6192B04BED7E83F6B1E90A /* RandomColorSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RandomColorSwift-dummy.m"; sourceTree = "<group>"; };
 		219C5A64C2EEF84338AB349C4D7115F3 /* Pods-Wallet_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Wallet_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		22A5A6E81552675CA37DF1E9D26B8A70 /* RandomColorSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RandomColorSwift.modulemap; sourceTree = "<group>"; };
-		243B8574439F77083D3760625F6F7480 /* LICENSE.md */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE.md; sourceTree = "<group>"; };
+		243B8574439F77083D3760625F6F7480 /* LICENSE.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		289C4595635EAC9A4EB5F853E06B6414 /* Pods-Wallet_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Wallet_Example-dummy.m"; sourceTree = "<group>"; };
 		2A4F65A34A534D1142B719090B4D1047 /* DynamicColor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DynamicColor-Info.plist"; sourceTree = "<group>"; };
 		2F8864101A0DC9A7C71EEBB25934CE7A /* DynamicColor+HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSL.swift"; path = "Sources/DynamicColor+HSL.swift"; sourceTree = "<group>"; };
@@ -84,24 +84,24 @@
 		31E96BA63C8A143B4FF0B50F84A7C969 /* HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSL.swift; path = Sources/HSL.swift; sourceTree = "<group>"; };
 		3216941EC33C4FBC64598C9767FFAFEE /* DynamicColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-umbrella.h"; sourceTree = "<group>"; };
 		32552FAC849EA4939AFFFE5ADDAB563B /* DynamicColor+HSB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSB.swift"; path = "Sources/DynamicColor+HSB.swift"; sourceTree = "<group>"; };
-		337B9117F3F11AAB93F613D404CE369E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		337B9117F3F11AAB93F613D404CE369E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		377D742924340DBA174FF2192D9727EB /* RandomColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomColor.swift; path = RandomColor/RandomColor.swift; sourceTree = "<group>"; };
 		3CF0CA6AA304CA6150404179B129FC07 /* RandomColorSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RandomColorSwift-Info.plist"; sourceTree = "<group>"; };
 		3E2FFE6601DDF70BC6295AF1CAE7E87A /* RandomColorSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RandomColorSwift.xcconfig; sourceTree = "<group>"; };
 		3E60C0069AA28A5B478DF32F98B52E30 /* Hue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hue.swift; path = RandomColor/Hue.swift; sourceTree = "<group>"; };
 		422E0EA063B33D319FCEB071CBB6B39D /* RandomColorSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RandomColorSwift-prefix.pch"; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4603757534A157D07CF86D75DA0641F9 /* DynamicColor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicColor.framework; path = DynamicColor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4603757534A157D07CF86D75DA0641F9 /* DynamicColor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DynamicColor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4691C059A5BFA430B56EF3E1E2AB4B35 /* RandomColorSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RandomColorSwift-umbrella.h"; sourceTree = "<group>"; };
 		46F9B942DAC6F5CBFBEC263CB3BE5F82 /* DynamicColor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-prefix.pch"; sourceTree = "<group>"; };
 		53B881F382CB26E4CD65B767B4EA537D /* DynamicColor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicColor-dummy.m"; sourceTree = "<group>"; };
-		5F1282CA90153E296E815D59B87584DE /* RandomColorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RandomColorSwift.framework; path = RandomColorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1282CA90153E296E815D59B87584DE /* RandomColorSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RandomColorSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D6DA768B54837387B9AC16362BA37F /* Pods-Wallet_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Wallet_Example-frameworks.sh"; sourceTree = "<group>"; };
 		61DAE61F73386E39C459D95C6C8D4817 /* DynamicColor+Deriving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Deriving.swift"; path = "Sources/DynamicColor+Deriving.swift"; sourceTree = "<group>"; };
 		69556F758E843E71787210C444ECC0B5 /* Wallet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Wallet-prefix.pch"; sourceTree = "<group>"; };
 		6AE6CED25A474FDBEE05A7258E260A10 /* DynamicColor+Mixing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Mixing.swift"; path = "Sources/DynamicColor+Mixing.swift"; sourceTree = "<group>"; };
-		6D2FDF894AB6A5AA164543A530669255 /* Wallet.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Wallet.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		6F24EC0B60E75361111D9DF05E9080FB /* Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Wallet.framework; path = Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D2FDF894AB6A5AA164543A530669255 /* Wallet.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Wallet.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6F24EC0B60E75361111D9DF05E9080FB /* Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDB7C168317D7E780869537141EFA08 /* Pods-Wallet_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wallet_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		710292A9CFFF87E114A32648EE0F4B8E /* Pods-Wallet_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Wallet_Example.modulemap"; sourceTree = "<group>"; };
 		74BF6E841DA84A5BAEEE4C62F10A07B2 /* Pods-Wallet_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallet_Example-Info.plist"; sourceTree = "<group>"; };
@@ -109,11 +109,11 @@
 		754191B07A8752330B97ED14976C819A /* Wallet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Wallet-umbrella.h"; sourceTree = "<group>"; };
 		811A76547726AE014F933B0F24F7278F /* DynamicColor+XYZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+XYZ.swift"; path = "Sources/DynamicColor+XYZ.swift"; sourceTree = "<group>"; };
 		97698A77D471DD7F555009ACC66B2417 /* Wallet-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Wallet-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D957769B456FEFD365EE9B7523AEA07 /* DynamicColor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DynamicColor.modulemap; sourceTree = "<group>"; };
 		A69DC683EF0488C4950607B5EABF3389 /* DynamicColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColor.swift; path = Sources/DynamicColor.swift; sourceTree = "<group>"; };
 		A930AAC69CE57A103561B0B9AB4DFD1B /* CardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardView.swift; path = Wallet/Classes/CardView.swift; sourceTree = "<group>"; };
-		B54CD22FAD70B84136E50A8F13658DB4 /* Pods_Wallet_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Wallet_Example.framework; path = "Pods-Wallet_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B54CD22FAD70B84136E50A8F13658DB4 /* Pods_Wallet_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDBD4FA71158C765BFC7AABBDDF69074 /* ContrastDisplayContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContrastDisplayContext.swift; path = Sources/ContrastDisplayContext.swift; sourceTree = "<group>"; };
 		D1677C9B3163DC63AC68DF1B142064F3 /* Pods-Wallet_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wallet_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		DD76082779A69F786B3D035EBCF1CE70 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
@@ -250,7 +250,6 @@
 				377D742924340DBA174FF2192D9727EB /* RandomColor.swift */,
 				7A96A574822C4A3E0210FC45E3808C86 /* Support Files */,
 			);
-			name = RandomColorSwift;
 			path = RandomColorSwift;
 			sourceTree = "<group>";
 		};
@@ -312,7 +311,6 @@
 				DD76082779A69F786B3D035EBCF1CE70 /* Utils.swift */,
 				3B8DB16EEC50022D899B724DA66CB2FC /* Support Files */,
 			);
-			name = DynamicColor;
 			path = DynamicColor;
 			sourceTree = "<group>";
 		};
@@ -465,7 +463,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1030;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -473,6 +471,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 8B631D9A1E4456DE0B43762399B8977A /* Products */;
@@ -648,8 +647,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -659,7 +657,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C683D4A5949395E593C6E3BFB33AD3D /* Wallet.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -693,7 +690,6 @@
 			baseConfigurationReference = 0F5C1B5DFD52111C26000CD87E441FB7 /* Pods-Wallet_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -728,7 +724,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E2FFE6601DDF70BC6295AF1CAE7E87A /* RandomColorSwift.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -759,7 +754,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E2FFE6601DDF70BC6295AF1CAE7E87A /* RandomColorSwift.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -792,7 +786,6 @@
 			baseConfigurationReference = 6FDB7C168317D7E780869537141EFA08 /* Pods-Wallet_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -826,7 +819,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00A81D80F7834A90640A9A9EC722CAF0 /* DynamicColor.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -923,7 +915,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C683D4A5949395E593C6E3BFB33AD3D /* Wallet.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -957,7 +948,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00A81D80F7834A90640A9A9EC722CAF0 /* DynamicColor.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

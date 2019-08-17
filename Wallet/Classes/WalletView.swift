@@ -1,3 +1,4 @@
+import UIKit
 
 /**
  The WalletView class manages an ordered collection of card view and presents them.
@@ -168,6 +169,9 @@ open class WalletView: UIView {
     
     /** The positioning of card views relative to each other when the wallet view is not presenting a card view. */
     public var minimalDistanceBetweenStackedCardViews: CGFloat = 52 { didSet { calculateLayoutValues() } }
+    
+    /** Use this property to use fixed distance between card views */
+    public var useHeaderDistanceForStackedCards: Bool = false { didSet { calculateLayoutValues() } }
     
     /** The positioning of card views relative to each other when the wallet view is presenting a card view. */
     public var minimalDistanceBetweenCollapsedCardViews: CGFloat = 8 { didSet { calculateLayoutValues() } }
@@ -654,7 +658,11 @@ open class WalletView: UIView {
                 cardView.frame = cardViewFrame
             }
             
-            cardViewYPoint += distanceBetweenCardViews
+            if useHeaderDistanceForStackedCards {
+                cardViewYPoint += minimalDistanceBetweenStackedCardViews
+            } else {
+                cardViewYPoint += distanceBetweenCardViews
+            }
             
         }
         

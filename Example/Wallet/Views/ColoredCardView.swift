@@ -1,6 +1,5 @@
 
 import UIKit
-import Wallet
 
 import RandomColorSwift
 import DynamicColor

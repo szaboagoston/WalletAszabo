@@ -1,3 +1,4 @@
+import UIKit
 
 /**  The CardView class defines the attributes and behavior of the cards that appear in WalletView objects. */
 open class CardView: UIView {

@@ -1,6 +1,5 @@
 
 import UIKit
-import Wallet
 
 class ViewController: UIViewController {
 
@@ -13,11 +12,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         walletView.walletHeader = walletHeaderView
-        
+        walletView.useHeaderDistanceForStackedCards = true
         walletView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         var coloredCardViews = [ColoredCardView]()
-        for index in 1...100 {
+        for index in 1...3 {
             let cardView = ColoredCardView.nibForClass()
             cardView.index = index
             coloredCardViews.append(cardView)
@@ -25,7 +24,7 @@ class ViewController: UIViewController {
         
         walletView.reload(cardViews: coloredCardViews)
         
-        walletView.didUpdatePresentedCardViewBlock = { [weak self] (_) in
+        walletView.didPresentCardViewBlock = { [weak self] (_) in
             self?.showAddCardViewButtonIfNeeded()
             self?.addCardViewButton.addTransitionFade()
         }

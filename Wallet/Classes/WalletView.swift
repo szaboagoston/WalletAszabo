@@ -369,6 +369,12 @@ open class WalletView: UIView {
     
     func dismissPresentedCardView(animated: Bool, animationDuration: TimeInterval?, completion: LayoutCompletion? = nil) {
         
+        if let cardView = presentedCardView,
+            cardView.cardViewCanReleaseBlock?() == false {
+            layoutWalletView(animationDuration: WalletView.grabbingAnimationSpeed)
+            return
+        }
+        
         if insertedCardViews.count <= 1 || presentedCardView == nil {
             completion?(true)
             return

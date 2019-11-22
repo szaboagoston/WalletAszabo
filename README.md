@@ -15,13 +15,42 @@ Please, contribute and send pull requests!
 - iOS 11.0+
 - Swift 5
 
-## Installation
+## Getting Started
 
-To install the latest version, simply add the following line to your Podfile:
+- **[CocoaPods](https://cocoapods.org)**
 
-```
-pod 'Wallet'
-```
+    - Add the following lines to your Podfile:
+    
+      ```ruby
+      pod 'Wallet'
+      ```
+    - Run `pod install`
+    - You are all set!
+  
+- **[Carthage](https://github.com/carthage/carthage)**
+
+    - Add the following line to your Cartfile:
+      ```
+      github "rshevchuk/Wallet"
+      ```
+
+    - Run `carthage update`.  
+    - On your application targets' `General` settings tab, in the `Linked Frameworks and Libraries` section:
+        - Drag & drop the following frameworks from `Carthage/Build` folder on disk:
+    - On your application targets' `Build Phases` tab:
+        - Click `+` icon and choose `New Run Script Phase`.
+        - Create a script with a shell of your choice (e.g. `/bin/sh`).
+        - Add the following to the script area below the shell:
+          ```
+          /usr/local/bin/carthage copy-frameworks
+          ```
+
+        - Add the paths to the frameworks you want to use under `Input Files`, for example:
+        
+          ```
+          $(SRCROOT)/Carthage/Build/iOS/Wallet.framework
+          ```
+
 ## Documentation
 
 Documentation for Wallet can be found on [CocoaDocs.org](http://cocoadocs.org/docsets/Wallet/).
@@ -29,9 +58,15 @@ Documentation for Wallet can be found on [CocoaDocs.org](http://cocoadocs.org/do
 ## Preview
 ![Wallet](https://github.com/rshevchuk/Wallet/blob/master/preview.gif?raw=true)
 
-## Demo
+## Apps using Wallet
 
-To run the demo application use `pod try`:
+[Recipe Scaler](https://apps.apple.com/tt/app/id1483478067)
+
+*Send a PR to add your app here*
+
+## Example
+
+To run the example application use `pod try`:
 
 In a terminal, simply execute:
 

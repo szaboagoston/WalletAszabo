@@ -20,6 +20,9 @@ Please, contribute and send pull requests!
 
 *Send a PR to add your app here*
 
+## Preview
+![Wallet](https://github.com/rshevchuk/Wallet/blob/master/preview.gif?raw=true)
+
 ## Example
 
 To run the example application use `pod try`:

@@ -1,6 +1,5 @@
 # Wallet
 
-[![Version](https://img.shields.io/cocoapods/v/Wallet.svg?style=flat)](http://cocoadocs.org/docsets/Wallet)
 [![Platform](https://img.shields.io/cocoapods/p/Wallet.svg?style=flat)](http://cocoadocs.org/docsets/Wallet)
 [![License](https://img.shields.io/cocoapods/l/Wallet.svg?style=flat)](http://cocoadocs.org/docsets/Wallet)
 
@@ -14,6 +13,24 @@ Please, contribute and send pull requests!
 
 - iOS 11.0+
 - Swift 5
+
+## Apps using Wallet
+
+[Recipe Scaler](https://apps.apple.com/tt/app/id1483478067)
+
+*Send a PR to add your app here*
+
+## Example
+
+To run the example application use `pod try`:
+
+In a terminal, simply execute:
+
+```bash
+$ pod try Wallet
+```
+
+and run the target named `Wallet-Example` in Xcode.
 
 ## Getting Started
 
@@ -54,27 +71,6 @@ Please, contribute and send pull requests!
 ## Documentation
 
 Documentation for Wallet can be found on [CocoaDocs.org](http://cocoadocs.org/docsets/Wallet/).
-
-## Preview
-![Wallet](https://github.com/rshevchuk/Wallet/blob/master/preview.gif?raw=true)
-
-## Apps using Wallet
-
-[Recipe Scaler](https://apps.apple.com/tt/app/id1483478067)
-
-*Send a PR to add your app here*
-
-## Example
-
-To run the example application use `pod try`:
-
-In a terminal, simply execute:
-
-```bash
-$ pod try Wallet
-```
-
-and run the target named `Wallet-Example` in Xcode.
 
 ## Author
 

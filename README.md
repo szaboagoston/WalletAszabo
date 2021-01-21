@@ -75,10 +75,6 @@ and run the target named `Wallet-Example` in Xcode.
 
 Documentation for Wallet can be found on [CocoaDocs.org](http://cocoadocs.org/docsets/Wallet/).
 
-## Author
-
-Russ Shevchuk, inbox@rshevchuk.io
-
 ## License
 
 Wallet is available under the MIT license. See the LICENSE file for more info.

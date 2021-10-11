@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = 'Wallet'
+  s.name             = 'WalletAszabo'
   s.version          = '5.0'
   s.summary          = 'Wallet is a library to manage cards and passes.'
 
